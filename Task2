@@ -1,0 +1,44 @@
+# Jest w stanie przechowywać informacje na temat filmów, które znajdują się w systemie. Każdy film powinien mieć następujące atrybuty:
+# Tytuł
+# Rok wydania
+# Gatunek
+# Liczba odtworzeń
+class Movie:
+    def __init__(self, title, publication_date, genre ,views):
+        self.title = title
+        self.publish = publication_date
+        self.type = genre
+        self.views = views
+
+    def __repr__(self):
+        return f"{self.title}  {self.publication_date}  {self.genre} {self.views}"
+    
+    
+    def play(self ):
+        self.play_counter += 1
+        
+  
+    def generate_views(self ):
+        self.play_counter *=10
+
+
+# Umożliwia przechowywanie informacji na temat seriali. Każdy serial powinien mieć następujące atrybuty:
+# Tytuł
+# Rok wydania
+# Gatunek
+# Numer odcinka
+# Numer sezonu
+# Liczba odtworzeń
+
+class Series(Movie):
+    def __init__(self, title, publication_date, genre , views , season, episode, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.season = season
+        self.episode = episode
+    def __repr__(self):
+        return f" {self.title} {self.publication_date}  {self.genre} {self.views} {self.season} {self.episode} "
+
+# Filmy i seriale mają metodę play, która zwiększa liczbę odtworzeń danego tytułu o 1.
+# Po wyświetleniu serialu jako string pokazują się informacje o konkretnym odcinku, np.: “The Simpsons S01E05” (gdzie po S pokazany jest numer sezonu w notacji dwucyfrowej, natomiast po E - numer odcinka, również w zapisie dwucyfrowym).
+# Po wyświetleniu filmu jako string widoczne są tytuł i rok wydania np. “Pulp Fiction (1994)”.
+# Przechowuje filmy i seriale w jednej liście.
